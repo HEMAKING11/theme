@@ -786,7 +786,12 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
 
 /* Section title styling for index page */
 #indexPage .sectionTitle {
-  display: none !important;
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 1.6em;
 }
 
 #indexPage .sectionTitle:before {
@@ -1291,11 +1296,6 @@ layout-mobile #itemDetailPage .detailImageContainer .card {
 
 .sliderBubble {
   background: rgba(0, 0, 0, .75);
-}
-
-.cardContent .cardText,
-.cardContent .cardText .cardName {
-    display: none !important;
 }
 
 /* Applying font family to body and headings */
