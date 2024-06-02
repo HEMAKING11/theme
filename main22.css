@@ -786,12 +786,7 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
 
 /* Section title styling for index page */
 #indexPage .sectionTitle {
-  align-items: center;
-  color: #fff;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  font-size: 1.6em;
+  display: none !important;
 }
 
 #indexPage .sectionTitle:before {
