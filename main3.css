@@ -985,25 +985,55 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
   grid-column: auto/span 3;
 }
 
+/* Adjustments for series without list items */
+#itemDetailPage:has(.parentName a[data-type=Series]):not(:has(.listItem)) {
+  --card-width: 24vw;
+}
+
+#itemDetailPage:has(.parentName a[data-type=Series]):not(:has(.listItem)) .detailPagePrimaryContainer {
+  margin-top: 8.5vh;
+}
+
+#itemDetailPage:has(.parentName a[data-type=Series]):not(:has(.listItem)) .detailRibbon {
+  height: 43vh;
+}
+
 /* Mobile-specific styling for item detail page */
+.layout-mobile #itemDetailPage {
+  --card-width: 100%;
+}
+
 .layout-mobile #itemDetailPage .itemBackdrop {
-  background-image: linear-gradient(130deg, var(--accent1-light), var(--accent2-light));
-  filter: blur(10px) brightness(50%);
-  height: 80vh !important;
-  left: -10px;
+  filter: brightness(65%);
+  height: 90vh !important;
+  left: 0;
   margin-top: 0 !important;
   mask-image: linear-gradient(180deg, #000, transparent);
   -webkit-mask-image: linear-gradient(180deg, #000, transparent);
   position: absolute !important;
   top: 0;
-  width: calc(100vw + 20px);
+  width: 100vw;
+}
+
+.layout-mobile #itemDetailPage:has(.parentName a[data-type=Series]):not(:has(.listItem)) .detailRibbon {
+  --card-width: 100%;
+  height: 60vh;
+}
+
+.layout-mobile #itemDetailPage:has(.parentName a[data-type=Series]):not(:has(.listItem)) .detailRibbon .detailImageContainer .card {
+  max-width: 80vw !important;
+  min-width: 80vw !important;
+}
+
+.layout-mobile #itemDetailPage:has(.parentName a[data-type=Series]):not(:has(.listItem)) .itemBackdrop {
+  height: 55vh !important;
 }
 
 .layout-mobile #itemDetailPage .detailRibbon {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: 90vh;
   justify-content: flex-end;
   margin-top: 0 !important;
 }
@@ -1016,9 +1046,9 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
 
 .layout-mobile #itemDetailPage .detailImageContainer .card {
   filter: none !important;
-  margin: 0 !important;
-  max-width: 50vw !important;
-  min-width: 50vw;
+  margin: auto !important;
+  max-width: 60vw !important;
+  min-width: 60vw;
   position: static !important;
   top: 0;
   transform: none;
@@ -1027,6 +1057,17 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
 .layout-mobile #itemDetailPage .detailImageContainer .cardBox {
   box-shadow: none;
   margin: 0 !important;
+}
+
+.layout-mobile #itemDetailPage .detailSection {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3em;
+  margin-top: 2em;
+}
+
+.layout-mobile #itemDetailPage .detailPageContent {
+  padding-right: 0;
 }
 
 .layout-mobile #itemDetailPage .itemMiscInfo {
@@ -1049,24 +1090,16 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
 }
 
 .layout-mobile #itemDetailPage .mainDetailButtons {
-  flex-wrap: nowrap;
-  gap: 1em !important;
-  justify-content: flex-start;
-  overflow: auto;
-  width: 100%;
+  -moz-column-gap: .5em !important;
+  column-gap: .5em !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: .5em !important;
 }
 
 .layout-mobile #itemDetailPage .mainDetailButtons .emby-button[title=Play],
 .layout-mobile #itemDetailPage .mainDetailButtons .emby-button[title=Resume] {
-  background: transparent !important;
-  border: none !important;
-  overflow: visible;
-  padding: .7em;
-}
-
-.layout-mobile #itemDetailPage .mainDetailButtons .emby-button[title=Play]:after,
-.layout-mobile #itemDetailPage .mainDetailButtons .emby-button[title=Resume]:after {
-  all: unset !important;
+  width: 100%;
 }
 
 .layout-mobile #itemDetailPage .childrenItemsContainer.itemsContainer.vertical-list {
@@ -1143,9 +1176,7 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after {
     width: fit-content !important;
   }
 
-  .
-
-layout-mobile #itemDetailPage .detailImageContainer .card {
+  .layout-mobile #itemDetailPage .detailImageContainer .card {
     max-width: 40vw !important;
     min-width: 20vw;
     width: 100%;
@@ -1187,6 +1218,27 @@ layout-mobile #itemDetailPage .detailImageContainer .card {
   width: 100%;
 }
 
+.MuiBox-root .mainAnimatedPages {
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+
+body.dashboardDocument {
+  overflow: auto !important;
+}
+
+body.dashboardDocument div[data-role=page] {
+  height: -moz-fit-content;
+  height: fit-content;
+  left: 0 !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  overflow: visible;
+  position: relative !important;
+  width: 100%;
+}
+
 /* Styling for login page */
 #loginPage {
   mask-image: none;
@@ -1202,7 +1254,7 @@ layout-mobile #itemDetailPage .detailImageContainer .card {
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 1;
+  z-index: -1;
 }
 
 #loginPage>div {
