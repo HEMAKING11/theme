@@ -1293,6 +1293,11 @@ layout-mobile #itemDetailPage .detailImageContainer .card {
   background: rgba(0, 0, 0, .75);
 }
 
+.cardContent .cardText,
+.cardContent .cardText .cardName {
+    display: none !important;
+}
+
 /* Applying font family to body and headings */
 body, h1, h2, h4, h5, html {
   font-family: Rubik, sans-serif;
